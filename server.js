@@ -27,7 +27,15 @@ const FALLBACK_MSG = "Dear User, Apologies. The searched content is unavailable 
 const app = express();
 app.disable("x-powered-by");
 app.use(express.json({ limit: "1mb" }));
-app.use(express.static(path.join(ROOT, "public"), { maxAge: "1h" }));
+app.use(
+  express.static(path.join(ROOT, "public"), {
+    setHeaders(res, filePath) {
+      // Pages, styles and scripts: always check for a newer version, so a new
+      // deploy shows up on the next refresh. Images can be cached for a day.
+      res.setHeader("Cache-Control", /\.(html|css|js)$/.test(filePath) ? "no-cache" : "public, max-age=86400");
+    },
+  })
+);
 
 const upload = multer({
   storage: multer.memoryStorage(),
