@@ -2,6 +2,8 @@
 
 **Read. Understand. Ask. Instantly.**
 
+🔗 **Live:** https://paper-mind-js.onrender.com
+
 An intelligent PDF reader and Q&A assistant. Upload a PDF, and Paper Mind builds a
 searchable knowledge base from it, identifies the document's domain, and answers your
 questions using **only** the content of that document, citing the pages it drew from.
@@ -92,9 +94,9 @@ If several keys are set, the priority is Gemini → Claude → Hugging Face, unl
    the build (`npm ci`), start (`npm start`) and health check.
 3. When prompted, fill in **one** API key and leave the others blank.
 
-To switch your existing `paper-mind-ai` service instead: in its **Settings**, set
-Runtime to **Node**, Build Command to `npm ci`, Start Command to `npm start`, then
-redeploy.
+Or set it up by hand: **New → Web Service**, pick the repo, Language **Node**, Build
+Command `npm ci`, Start Command `npm start`, Instance Type **Free**, and add your API key
+under Environment Variables. Every push to `main` then redeploys automatically.
 
 Notes:
 - Render's free tier sleeps after ~15 minutes idle; the first request after that takes

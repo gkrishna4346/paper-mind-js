@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: paper-mind-ai
+    name: paper-mind-js
     runtime: node
     plan: free
     buildCommand: npm ci
