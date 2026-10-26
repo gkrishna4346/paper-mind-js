@@ -1,0 +1,28 @@
+{
+  "name": "paper-mind-ai",
+  "version": "2.0.0",
+  "description": "Paper Mind AI: PDF Q&A with a RAG pipeline (Node.js + plain HTML/CSS/JS)",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "rag",
+    "pdf",
+    "qa",
+    "llm"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0",
+    "multer": "^2.5.0",
+    "unpdf": "^1.9.1"
+  }
+}

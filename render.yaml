@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: paper-mind-ai
+    runtime: node
+    plan: free
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      # Fill in ONE key in the Render dashboard ("sync: false" = typed in, never stored in git).
+      - key: GOOGLE_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: ANTHROPIC_MODEL
+        value: claude-sonnet-5-5
+      - key: HF_API_KEY
+        sync: false
+      - key: HF_MODEL
+        value: meta-llama/Llama-3.3-70B-Instruct
+      - key: LLM_PROVIDER
+        sync: false
