@@ -29,47 +29,51 @@
       </button>
     </header>
 
-    <section class="row row-top">
-      <div class="pill desc">
-        <p>This tool is an intelligent PDF Reader &amp; Q&amp;A assistant that converts uploaded PDFs into a searchable knowledge base. It delivers fast, accurate, context-aware answers based exclusively on the uploaded document, and automatically identifies which domain the document belongs to.</p>
+    <div class="workspace">
+      <div class="controls">
+        <section class="row row-top">
+          <div class="pill desc">
+            <p>This tool is an intelligent PDF Reader &amp; Q&amp;A assistant that converts uploaded PDFs into a searchable knowledge base. It delivers fast, accurate, context-aware answers based exclusively on the uploaded document, and automatically identifies which domain the document belongs to.</p>
+          </div>
+
+          <label class="pill upload" id="uploadCard" for="fileInput" tabindex="0">
+            <input type="file" id="fileInput" accept="application/pdf,.pdf" hidden />
+            <span class="upload-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M12 17v-6"/><path d="m9.5 13.5 2.5-2.5 2.5 2.5"/></svg>
+            </span>
+            <span class="upload-title" id="uploadTitle">Upload your PDF<br />Document Here</span>
+            <span class="upload-meta" id="uploadMeta">Click or drop a file</span>
+          </label>
+        </section>
+
+        <section class="row row-kb">
+          <button class="pill kb-btn" id="buildKbBtn" type="button" disabled>
+            <span class="emoji" aria-hidden="true">🔍</span><span id="buildKbLabel">Build Knowledge Base</span>
+          </button>
+          <div class="pill domain" id="domainBox" aria-live="polite">
+            <span class="emoji" aria-hidden="true">✨</span><span id="domainLabel">Identified domain name appears here</span>
+          </div>
+        </section>
+
+        <form class="query-row" id="queryForm" autocomplete="off">
+          <label for="queryInput">User Query :</label>
+          <div class="pill query-box">
+            <input type="text" id="queryInput" placeholder="Enter your query here ...." maxlength="1000" disabled />
+            <button class="icon-btn send-btn" id="sendBtn" type="submit" title="Ask" aria-label="Ask" disabled>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+            </button>
+          </div>
+        </form>
+
+        <div class="suggestions" id="suggestions" hidden></div>
       </div>
 
-      <label class="pill upload" id="uploadCard" for="fileInput" tabindex="0">
-        <input type="file" id="fileInput" accept="application/pdf,.pdf" hidden />
-        <span class="upload-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M12 17v-6"/><path d="m9.5 13.5 2.5-2.5 2.5 2.5"/></svg>
-        </span>
-        <span class="upload-title" id="uploadTitle">Upload your PDF<br />Document Here</span>
-        <span class="upload-meta" id="uploadMeta">Click or drop a file</span>
-      </label>
-    </section>
-
-    <section class="row row-kb">
-      <button class="pill kb-btn" id="buildKbBtn" type="button" disabled>
-        <span class="emoji" aria-hidden="true">🔍</span><span id="buildKbLabel">Build Knowledge Base</span>
-      </button>
-      <div class="pill domain" id="domainBox" aria-live="polite">
-        <span class="emoji" aria-hidden="true">✨</span><span id="domainLabel">Identified domain name appears here</span>
-      </div>
-    </section>
-
-    <form class="query-row" id="queryForm" autocomplete="off">
-      <label for="queryInput">User Query :</label>
-      <div class="pill query-box">
-        <input type="text" id="queryInput" placeholder="Enter your query here ...." maxlength="1000" disabled />
-        <button class="icon-btn send-btn" id="sendBtn" type="submit" title="Ask" aria-label="Ask" disabled>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
-        </button>
-      </div>
-    </form>
-
-    <div class="suggestions" id="suggestions" hidden></div>
-
-    <section class="pill answer" aria-live="polite">
-      <div class="answer-body" id="answerBody">
-        <p class="placeholder">Answers extracted by Paper Mind will appear here</p>
-      </div>
-    </section>
+      <section class="pill answer" aria-live="polite">
+        <div class="answer-body" id="answerBody">
+          <p class="placeholder">Answers extracted by Paper Mind will appear here</p>
+        </div>
+      </section>
+    </div>
 
     <footer class="foot" id="foot">Answers come only from your uploaded document.</footer>
   </main>

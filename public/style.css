@@ -137,6 +137,9 @@ body {
 }
 .reset-btn:hover { background: rgba(255, 255, 255, 0.9); transform: rotate(-120deg); }
 
+/* ---------- Workspace: controls + answer ---------- */
+.workspace, .controls { display: flex; flex-direction: column; gap: 20px; }
+
 /* ---------- Row 1: description + upload ---------- */
 .row { display: grid; gap: 20px; }
 .row-top { grid-template-columns: 2fr 1fr; }
@@ -377,6 +380,74 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* ---------- Desktop: controls on the left, answer box fills the right ---------- */
+@media (min-width: 1100px) {
+  body { padding: 20px 32px 16px; }
+  .app { max-width: 1480px; gap: 18px; }
+  .hero { padding: 14px 64px 14px 28px; border-radius: 32px; }
+  .hero-logo { width: 92px; }
+  .hero h1 { font-size: clamp(44px, 4vw, 60px); }
+  .tagline { font-size: 19px; margin-top: 8px; }
+  .hero-glow { margin-top: 8px; }
+
+  .workspace {
+    display: grid;
+    grid-template-columns: minmax(360px, 1fr) minmax(0, 1.55fr);
+    align-items: stretch;
+    gap: 22px;
+  }
+  /* Same height as the right-hand column (or the screen, whichever is taller);
+     long answers scroll inside the box instead of stretching the page. */
+  .answer {
+    grid-column: 2;
+    grid-row: 1;
+    position: relative;
+    min-height: max(440px, calc(100vh - 200px));
+    border-radius: 44px;
+    padding: 0;
+  }
+  .answer-body {
+    position: absolute;
+    inset: 34px 32px 30px 40px;
+    overflow-y: auto;
+    padding-right: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.45) transparent;
+  }
+  .controls { grid-column: 1; grid-row: 1; gap: 16px; }
+
+  .row-top, .row-kb { grid-template-columns: 1fr; gap: 16px; padding: 0; }
+  .desc { padding: 20px 24px; }
+  .desc p { font-size: 14px; }
+  .upload { min-height: 150px; }
+  .kb-btn { font-size: 19px; }
+  .kb-btn, .domain { min-height: 56px; }
+  .query-row { flex-direction: column; align-items: stretch; gap: 8px; padding: 0; margin: 0; }
+  .query-row > label { font-size: 16px; font-weight: 700; }
+  .query-box { min-height: 58px; }
+  .query-box input { font-size: 17px; }
+  .suggestions { padding: 0; margin-top: -4px; flex-direction: column; align-items: stretch; }
+  .suggestions .chip { border-radius: 14px; }
+  .foot { margin-top: -4px; }
+}
+/* Short laptop screens: tighten the right column so it all fits */
+@media (min-width: 1100px) and (max-height: 780px) {
+  .hero { padding-top: 10px; padding-bottom: 10px; }
+  .hero-logo { width: 72px; }
+  .hero h1 { font-size: 44px; }
+  .tagline { font-size: 16px; margin-top: 4px; }
+  .controls { gap: 12px; }
+  .desc { padding: 14px 20px; }
+  .desc p { font-size: 13px; line-height: 1.5; }
+  .upload { min-height: 108px; padding: 14px; }
+  .upload-title { font-size: 17px; }
+  .kb-btn, .domain { min-height: 48px; padding: 10px 16px; }
+  .kb-btn { font-size: 17px; }
+  .domain { font-size: 15px; }
+  .query-box { min-height: 52px; }
+  .suggestions .chip { padding: 6px 12px; font-size: 13px; }
 }
 
 /* ---------- Responsive ---------- */
